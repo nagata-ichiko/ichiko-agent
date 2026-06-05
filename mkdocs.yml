@@ -88,6 +88,9 @@ nav:
     - tests/index.md
     # TODO: スキル実行で自動追加される
   - 品質ゲート: quality-gates.md
+  - ドメイン知識:
+    - domain-knowledge/index.md
+    - Q&Aテンプレート: domain-knowledge/qa-template.md
   - API仕様(Swagger): api/index.md
   - テンプレート:
     - フェーズ1｜要件定義:

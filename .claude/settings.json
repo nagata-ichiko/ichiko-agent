@@ -37,6 +37,9 @@
     "enabled": true,
     "enableWeakerNetworkIsolation": true
   },
+  "env": {
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "32000"
+  },
   "hooks": {
     "PreToolUse": [
       {
@@ -49,6 +52,10 @@
           {
             "type": "command",
             "command": ".claude/hooks/enforce-execution-rules.sh"
+          },
+          {
+            "type": "command",
+            "command": ".claude/hooks/show-git-context.sh"
           }
         ]
       }
