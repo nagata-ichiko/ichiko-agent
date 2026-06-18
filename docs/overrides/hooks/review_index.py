@@ -99,6 +99,21 @@ def _load_keywords(config) -> list[dict]:
     return compiled
 
 
+def _doc_url(src_path: str) -> str:
+    """src_path を use_directory_urls 形式の URL パスに変換する。
+
+    - `index.md`        → "" （サイトルート）
+    - `foo/index.md`    → "foo/"
+    - `foo/bar.md`      → "foo/bar/"
+    """
+    path = src_path.removesuffix(".md")
+    if path == "index":
+        return ""
+    if path.endswith("/index"):
+        return path[: -len("index")]
+    return path + "/"
+
+
 def _line_excerpt(line: str) -> str:
     excerpt = " ".join(line.strip().split())
     if len(excerpt) > EXCERPT_MAX:
@@ -165,7 +180,7 @@ def _render(entries: list[dict], keywords: list[dict], keyword_hits: dict[str, l
         lines.append("| 種別 | ID | ファイル | 抜粋 |")
         lines.append("|------|----|---------|------|")
         for e in entries:
-            url_path = e["file"].removesuffix(".md") + "/"
+            url_path = _doc_url(e["file"])
             link = f'<a href="/{url_path}#{e["id"]}" target="_blank" rel="noopener noreferrer">{e["file"]}</a>'
             excerpt_safe = e["excerpt"].replace("|", "\\|")
             label = TYPE_LABELS.get(e["kind"], e["kind"])
@@ -193,7 +208,7 @@ def _render(entries: list[dict], keywords: list[dict], keyword_hits: dict[str, l
             lines.append("| ファイル | 行 | 抜粋 |")
             lines.append("|---------|---:|------|")
             for h in hits:
-                url_path = h["file"].removesuffix(".md") + "/"
+                url_path = _doc_url(h["file"])
                 link = f'<a href="/{url_path}" target="_blank" rel="noopener noreferrer">{h["file"]}</a>'
                 excerpt_safe = h["excerpt"].replace("|", "\\|")
                 lines.append(f'| {link} | {h["line"]} | {excerpt_safe} |')
