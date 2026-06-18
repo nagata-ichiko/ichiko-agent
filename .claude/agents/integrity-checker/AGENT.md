@@ -36,6 +36,7 @@ model: sonnet
    - `docs/design/dependency-graph.md`（存在する場合）
 6. **画面遷移リンク実在** — `screen-flow.md` 内の遷移先が実在するか
 7. **キーワード残存（辞書ベース）** — `review-keywords.yml` の各パターン残存を可視化。`severity: warn` エントリが1件でもヒットしたら **FAIL**、`severity: info` は INFO のみ
+8. **認可設計の完全性・網羅性** — `security-design.md` 存在時のみ（なければ N/A）。§3 認可設計が埋まっているか（8a）、API権限マトリクス⇔openapi.yaml の網羅（8b）、画面アクセスマトリクス⇔screen-flow.md の網羅（8c）、ロール定義の一貫性（8d）。「認可未定義のAPI/画面」は FAIL、対応が曖昧なものは WARN
 
 ## 出力フォーマット
 
@@ -77,6 +78,12 @@ JSON または Markdown 構造化レポート:
 - 各キーワード:
   - [icon] [label]（severity）: [件数] 件
     - [ファイル:行, 抜粋]
+
+### 認可設計（security-design.md 存在時のみ）
+- 8a 完全性: PASS | FAIL | WARN | N/A（欠落小節 / 認可セクションの要確認・TODO / AI指示コメント残存）
+- 8b API権限網羅: PASS | FAIL | WARN | N/A（FAIL=3.4が実質空 / WARN=tag↔リソース対応が未確定）
+- 8c 画面アクセス網羅: PASS | FAIL | N/A（認可未定義の画面: [画面名, パス]）
+- 8d ロール一貫性: PASS | FAIL | WARN | N/A（FAIL=定義ロールが列に無い / WARN=未知の列あり）
 
 ### 総合判定
 - OVERALL: PASS | FAIL
