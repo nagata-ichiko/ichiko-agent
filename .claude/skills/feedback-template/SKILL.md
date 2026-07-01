@@ -55,7 +55,7 @@ test.ymlのe2eジョブの環境変数取得に | tr -d '"' を追加
 | 共通ルールの追加・修正（認証、ブランチ戦略等） | .claude/CLAUDE.md |
 | CIの設定不備 | ci-templates/ |
 | スキルの手順不足・誤り | .claude/skills/ の該当SKILL.md |
-| テスト生成の品質問題 | gen-tests/SKILL.md または implement-spec/SKILL.md |
+| テスト生成の品質問題 | build/SKILL.md |
 | ドキュメント生成の問題 | 該当スキルのSKILL.md |
 
 **注意:** 「技術制約」はプロジェクト固有（ルートCLAUDE.md）なのでテンプレートには反映しない。ただし、共通で踏みやすい制約は.claude/CLAUDE.mdのコメント例示に追加してよい。

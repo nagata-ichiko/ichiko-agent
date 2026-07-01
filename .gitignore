@@ -51,6 +51,8 @@ vendor/bundle/
 # Build outputs
 dist/
 build/
+!.claude/skills/build/
+!.claude/skills/build/**
 out/
 .next/
 .nuxt/

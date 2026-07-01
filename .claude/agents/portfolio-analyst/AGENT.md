@@ -42,11 +42,11 @@ LLM がスキル選択時に処理する description の総量を評価する。
 ```
 競合タイプ:
 - nested: スキル A の守備範囲がスキル B に包含される
-  例: apply-design ⊂ revise-spec（UI変更は仕様変更の一部）
+  例: mock ⊂ build（見た目変更は実装の一部）
 - adjacent: 守備範囲が隣接し境界が曖昧
-  例: implement-spec ↔ revise-spec（新規 vs 既存の判定が曖昧）
+  例: grill ↔ map（新規要件 vs 既存把握のトリガーが曖昧）
 - overlapping: 部分的にキーワードが重複
-  例: spec-feature ↔ draft-spec（Spec作成のトリガー語が共通）
+  例: plan ↔ build（実装計画と自律実装でトリガー語が共通）
 ```
 
 **分析手順**:
