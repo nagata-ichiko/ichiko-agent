@@ -69,8 +69,8 @@ TEMPLATE_REPO="<CLAUDE.mdに記載のURL>"
 OWNER_REPO=$(echo "$TEMPLATE_REPO" | sed -E 's#.+[:/]([^/]+/[^/]+?)(\.git)?$#\1#')
 
 # gh CLI経由でHTTPS clone（サンドボックス環境でSSHが使えないため）
-gh repo clone "$OWNER_REPO" /tmp/yamasaki
-cd /tmp/yamasaki
+gh repo clone "$OWNER_REPO" /tmp/ichiko-agent
+cd /tmp/ichiko-agent
 git checkout -b fix/<問題を端的に表すスラッグ>
 ```
 
@@ -83,7 +83,7 @@ git checkout -b fix/<問題を端的に表すスラッグ>
 ### 6. コミット＆プッシュ＆PR作成
 
 ```bash
-cd /tmp/yamasaki
+cd /tmp/ichiko-agent
 git add -A
 git commit -m "fix: <問題の要約>"
 git push origin fix/<スラッグ>
@@ -110,7 +110,7 @@ EOF
 ### 8. クリーンアップ
 
 ```bash
-find /tmp/yamasaki -delete 2>/dev/null || true
+find /tmp/ichiko-agent -delete 2>/dev/null || true
 ```
 
 ユーザーに報告：「テンプレートリポにPRを作成しました: <PR URL>」

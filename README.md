@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="assets/social-preview.svg" alt="yamasaki">
+  <img src="assets/social-preview.svg" alt="ichiko-agent">
 </p>
 
-# yamasaki
+# ichiko-agent
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-powered-blueviolet)](https://docs.anthropic.com/en/docs/claude-code)
@@ -12,6 +12,8 @@
 Claude Code で「設計書ファースト」の開発を自動化するテンプレート。
 
 自然言語で話しかけるだけで、要件定義 → 基本設計 → 実装 → テスト → レビューを AI が主導して進めます。
+
+> **Fork の由来**: 本リポジトリは **yamasaki**（AI エージェントハーネス）をフォークし、課題・改善点を反映して発展させたものです。テンプレートリポとしての取り込み（sync-template）・フィードバック（feedback-template）先は、本リポジトリ `nagata-ichiko/ichiko-agent` を対象とします。
 
 ## 特徴
 
@@ -46,10 +48,10 @@ workspace/
 
 ### 3. テンプレートリポURLを設定
 
-`.claude/CLAUDE.md` の `<your-org>` を自分の GitHub org / ユーザー名に置き換える：
+`.claude/CLAUDE.md` の「テンプレートリポ」に、取り込み・フィードバック先のリポを設定する（既定は本リポジトリ）：
 
 ```
-git@github.com:<your-org>/yamasaki.git
+git@github.com:nagata-ichiko/ichiko-agent.git
 ```
 
 ### 4. セットアップ

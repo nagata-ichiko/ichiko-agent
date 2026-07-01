@@ -41,12 +41,12 @@
 
   <!-- Title shadow layer (glow effect) -->
   <text x="640" y="280" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="120" font-weight="900" fill="url(#grad)" letter-spacing="16" opacity="0.15" filter="url(#softGlow)">
-    YAMASAKI
+    ICHIKO
   </text>
 
   <!-- Title main -->
   <text x="640" y="280" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="120" font-weight="900" fill="url(#textGrad)" letter-spacing="16" filter="url(#glow)">
-    YAMASAKI
+    ICHIKO
   </text>
 
   <!-- Gradient underline -->

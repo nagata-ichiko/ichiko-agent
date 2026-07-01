@@ -6,7 +6,7 @@
 
 <!-- feedback-templateスキルがPR送信先として使用する -->
 
-git@github.com:<your-org>/yamasaki.git
+git@github.com:nagata-ichiko/ichiko-agent.git
 
 ## Claude Code 設定
 
