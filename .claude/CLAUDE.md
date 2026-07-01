@@ -13,7 +13,7 @@ git@github.com:nagata-ichiko/ichiko-agent.git
 | フェーズ | スキル | 役割 | 成果物 |
 |---|---|---|---|
 | Grill | `grill` | 要件を問い詰めて引き出す | 要件カード `docs/specs/[SPEC-ID].md` |
-| Sketch | `mock` | UIモックで認識合わせ / 見た目差し替え | Artifact モック |
+| Sketch | `mock` / `design` | mock=UIモックで認識合わせ・見た目差し替え / design=作り込み＋デザイントークン化 | Artifact モック / デザイントークン `docs/design/` |
 | Plan | `plan` | ゴール+マイルストーン分解 | goal-board `impl-plans/[SPEC-ID].md` |
 | Build | `build` | 自律実装ループ（実装/変更/緊急/テスト） | コード + テスト |
 | Map | `map` | 既存コード理解（オンデマンド） | overview `docs/overview.md` |
