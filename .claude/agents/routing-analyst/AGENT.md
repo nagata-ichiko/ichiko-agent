@@ -22,10 +22,10 @@ model: sonnet
 
 | カテゴリ | 定義 | 例 |
 |----------|------|-----|
-| `correct` | 正しいスキルが発火した | 「全部のSpecを作って」→ spec-all |
+| `correct` | 正しいスキルが発火した | 「○○を実装して」→ build |
 | `false_negative` | 発火すべきだったが発火しなかった | 「テスト書いて」→ スキルなしで手動実装 |
-| `false_positive` | 発火すべきでないのに発火した | 雑談 → spec-feature 発火 |
-| `confused` | 誤ったスキルが発火した | 「仕様変更して」→ implement-spec（正解: revise-spec） |
+| `false_positive` | 発火すべきでないのに発火した | 雑談 → grill 発火 |
+| `confused` | 誤ったスキルが発火した | 「見た目だけ変えて」→ build（正解: mock） |
 | `no_skill_needed` | スキル不要のターン | 「このファイル読んで」 |
 | `explicit_invocation` | `/skill-name` で明示呼び出し | `/commit` |
 | `coverage_gap` | 既存スキルでカバーできない意図 | まだ対応するスキルがない新しいタスク |

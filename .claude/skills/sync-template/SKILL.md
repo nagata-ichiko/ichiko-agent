@@ -25,16 +25,14 @@ description: |
 | `CLAUDE.md`（ルート） | プロジェクト固有設定 |
 | `.claude/settings.json` | プロジェクト固有権限設定 |
 | `.claude/settings.local.json` | プロジェクト固有権限設定 |
-| `mkdocs.yml` | プロジェクト固有ナビゲーション |
 | `README.md` | プロジェクト固有の説明 |
-| `spec-map.yml` | プロジェクト固有のSpec管理 |
 | `CHANGELOG.md` | プロジェクト固有の変更履歴 |
 | `.github/workflows/ci.yml` | generate-ci.pyで生成済み |
 | `.github/demo-screenshots/` | テンプレートリポ固有のデモ画像 |
 
 ## 保護リスト（add-only: 既存ファイルは上書きしない）
 
-以下のパスは、プロジェクトが `init-spec` / `draft-spec` / `spec-all` / `implement-spec` 等のスキルで生成・編集する成果物。テンプレ側に同名ファイル（スタブ）があっても、**ローカルに既に存在する場合は上書きしない**。ローカルに無ければ新規作成のみ許可する。
+以下のパスは、プロジェクトが `grill` / `plan` / `build` / `map` 等のスキルで生成・編集する成果物。テンプレ側に同名ファイル（スタブ）があっても、**ローカルに既に存在する場合は上書きしない**。ローカルに無ければ新規作成のみ許可する。
 
 | パスパターン | 内容 |
 |-------------|------|
@@ -120,7 +118,7 @@ comm -13 /tmp/tpl_files.txt /tmp/local_files.txt | grep -E \
 is_excluded() {
   case "$1" in
     CLAUDE.md|.claude/settings.json|.claude/settings.local.json) return 0 ;;
-    mkdocs.yml|README.md|spec-map.yml|CHANGELOG.md) return 0 ;;
+    README.md|CHANGELOG.md) return 0 ;;
     .github/workflows/ci.yml) return 0 ;;
     .github/demo-screenshots/*) return 0 ;;
   esac
@@ -154,8 +152,7 @@ is_protected() {
   ...
 
 【更新】N件
-  更新: .claude/skills/init-spec/SKILL.md
-  更新: docs/api/openapi.yaml
+  更新: .claude/skills/build/SKILL.md
   ...
 
 【構造変更】N件
@@ -172,7 +169,7 @@ is_protected() {
 
 【除外】N件（スキップ）
   除外: CLAUDE.md — プロジェクト固有
-  除外: mkdocs.yml — プロジェクト固有
+  除外: README.md — プロジェクト固有
   ...
 
 取り込みますか？
@@ -210,7 +207,7 @@ done
 cat /tmp/tpl_files.txt | while read f; do
   # 除外リストはスキップ
   case "$f" in
-    CLAUDE.md|.claude/settings.json|.claude/settings.local.json|mkdocs.yml|README.md|spec-map.yml|CHANGELOG.md) continue ;;
+    CLAUDE.md|.claude/settings.json|.claude/settings.local.json|README.md|CHANGELOG.md) continue ;;
     .github/workflows/ci.yml|.github/demo-screenshots/*) continue ;;
   esac
   [ "$f" = ".claude/CLAUDE.md" ] && continue

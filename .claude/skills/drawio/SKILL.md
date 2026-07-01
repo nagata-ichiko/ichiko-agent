@@ -5,7 +5,7 @@ description: Always use when user asks to create, generate, draw, or design a di
 
 # Draw.io Diagram Skill
 
-draw.io の `.drawio` ファイルを生成し、MkDocs ドキュメントに埋め込む。
+draw.io の `.drawio` ファイルを生成する。生成したファイルは draw.io アプリ／VSCode の Draw.io Integration 拡張で開いて閲覧・編集し、PNG/SVG にエクスポートして参照する。
 Mermaid では表現しにくい複雑なアーキテクチャ図・詳細ダイアグラムに使用する。
 
 ## Mermaid vs draw.io 使い分け基準
@@ -19,38 +19,18 @@ Mermaid では表現しにくい複雑なアーキテクチャ図・詳細ダイ
 | ネットワーク構成図・インフラ図 | draw.io | AWS/GCP等のアイコンが使える |
 | 画面遷移図（多数ページ） | draw.io | 配置の自由度が必要 |
 
-## 前提条件: mkdocs.yml に drawio プラグインが必要
-
-drawio ファイルを MkDocs で描画するには `mkdocs-drawio` プラグインが必要。
-mkdocs.yml の `plugins:` セクションに `- drawio` が含まれていることを確認し、
-なければ追加してから図を作成する。
-
-```yaml
-plugins:
-  - search
-  - drawio          # ← これが必要
-```
-
 ## 図の作成手順
 
-1. **mkdocs.yml の `plugins:` に `- drawio` があるか確認**（なければ追加）
-2. **draw.io XML を生成** -- mxGraphModel 形式
-3. **Write ツールで `.drawio` ファイルを書き出す**
-4. **Markdown で参照** -- `![説明](path/to/diagram.drawio)` （mkdocs-drawio プラグインが描画）
+1. **draw.io XML を生成** -- mxGraphModel 形式
+2. **Write ツールで `.drawio` ファイルを書き出す**
+3. **draw.io アプリ／VSCode の Draw.io Integration 拡張で開く** -- 閲覧・編集する
+4. **PNG/SVG にエクスポート** -- ドキュメントや資料に貼り込む場合は draw.io からエクスポートした画像を参照する
 
 ## ファイル配置・命名規則
 
-- **配置先**: 参照するMarkdownと同じディレクトリ、または `docs/images/` 配下
+- **配置先**: 関連する成果物と同じディレクトリ、または `docs/images/` 配下
 - **命名**: `[内容]-[種別].drawio`（例: `aws-architecture.drawio`, `order-flow-detail.drawio`）
 - **小文字ハイフン区切り**
-
-## Markdown での埋め込み
-
-```markdown
-![AWSアーキテクチャ図](./aws-architecture.drawio)
-![Page-2](./diagram.drawio)                          <!-- ページ名指定 -->
-![](./diagram.drawio){ page="Page-2" }               <!-- attr_list でページ指定 -->
-```
 
 ## XML 基本構造
 

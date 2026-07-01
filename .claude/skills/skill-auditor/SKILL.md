@@ -10,7 +10,6 @@ context:
   required:
     - _shared/subagent-task-format.md
     - skill-auditor/decision-tree.md
-    - _shared/health-check.md
 ---
 
 # Skill Auditor — ポートフォリオ健全性監査
