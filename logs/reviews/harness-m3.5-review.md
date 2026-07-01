@@ -65,3 +65,25 @@
 4. **M4**（自律の封筒の強制）— 独立してP0。
 
 > 総括: 理想像の核心（仕様だけで判断・質問不要）に対し、M3.5 は**成果物（仕様書）のドリフトをほぼ封じた**。残課題は実行経路の決定化と、旧ルール（仮採用）の思想的整合であり、いずれも局所修正で片付く。
+
+---
+
+## M4 実施記録（2026-07-01）— 自律の封筒の強制
+
+ユーザー判断: **自己防衛のみ hard-block ＋ 一線は警告**。
+
+- `validate-command.sh` を拡張。
+  - **自己防衛（絶対禁止 / exit 2 hard-block）**: `--no-verify` / `git config core.hooksPath` / `.claude/hooks`・`settings` の Bash 改変（rm/sed -i/truncate/mv/tee/リダイレクト）/ hooks への chmod。Bash 経由のガードレール迂回を封鎖。Edit/Write によるテンプレ正規編集は妨げない設計。
+  - **一線（確認必須 / exit 0 + 警告）**: ①外部アクセス（nmap/nc/telnet・外部DB）②データ外部送出（rsync remote/npm publish/aws s3/gh release）③不可逆破壊（git clean -f/dd/shred/mkfs/truncate -s）。実行は止めず警告のみ（§11 で「一線」は禁止でなく確認必須のため）。
+- security.md / principles.md §11 / autonomous-mode.md §5 に強制の実体を明記。
+- テスト: 正常系（git commit/add/push・npm test・cat settings・`git clean -n`）は素通り、自己防衛5パターンは exit 2、一線5パターンは警告付き exit 0 を確認。
+
+---
+
+## デザイン連携 方針決定（2026-07-01）— 実装は次セッション
+
+ユーザー判断: **方針だけ今決定・実装は次回・Canva MCP は不採用**。
+
+- **方針**: `mock` は「認識合わせの簡易 Artifact（速く回す・作り込まない）」に専念を維持し、**作り込み/実デザイン成果物は別建て**にする。Claude の Artifact 生成（＝Claude ベースのデザイン）を主軸にする。
+- **未確定（次セッションで詰める）**: (a) 新 `design` スキルを新設するか、`mock` にモード追加するか（ルーティング複雑化 Q1 とのトレードオフ）。(b)「Claude Design 連携」が具体的に何を指すか（Artifact 高品質生成か、外部デザインプロダクト連携か）をユーザーに確認。
+- **不採用**: Canva MCP（`mcp__claude_ai_Canva__*`）は使わない。
