@@ -43,7 +43,7 @@
 - [ ] Given §8 に (a)解消必須の未決が残る要件カード When spec-lint を実行 Then 終了コード非0
 - [ ] Given §3 受入基準に曖昧語（§6入力表の禁止リスト参照）を含む要件カード When spec-lint を実行 Then 終了コード非0で該当行が出力される
 - [ ] Given 完成した要件カード（本カード自身を含む）When spec-lint を実行 Then 終了コード0
-- [ ] Given grill Step 5 および build 準備フェーズ When 手順書（SKILL.md）を読む Then spec-lint の実行が明記されている
+- [ ] Given grill の Fixゲート判定 Step および build 準備フェーズ When 手順書（SKILL.md）を読む Then spec-lint の実行が明記されている
 
 ## 4. 画面遷移表
 
