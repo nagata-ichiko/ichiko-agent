@@ -67,25 +67,25 @@ fi
 # =============================================================================
 
 # SD1. コミット/プッシュ時のフック無効化（--no-verify）
-if echo "$COMMAND" | grep -qE 'git\s+(commit|push|merge)\b[^|;]*--no-verify'; then
+if echo "$COMMAND" | grep -qE 'git\s+(commit|push|merge)\b[^|;&]*--no-verify'; then
   echo "BLOCKED: --no-verify によるフック無効化は禁止です（ガードレールは人間が手動で扱う / principles §11）" >&2
   exit 2
 fi
 
 # SD2. git フックパスの差し替え（フック迂回）
-if echo "$COMMAND" | grep -qE 'git\s+config\b[^|;]*core\.hooksPath'; then
+if echo "$COMMAND" | grep -qE 'git\s+config\b[^|;&]*core\.hooksPath'; then
   echo "BLOCKED: core.hooksPath の変更（フック迂回）は禁止です" >&2
   exit 2
 fi
 
 # SD3. hooks / settings の破壊的改変（deny削除・フック削除/空化）
-if echo "$COMMAND" | grep -qE '(\brm\b|\bsed\b[^|;]*-i|\btruncate\b|\bmv\b|\btee\b|>>?)[^|;]*\.claude/(hooks|settings)'; then
+if echo "$COMMAND" | grep -qE '(\brm\b|\bsed\b[^|;&]*-i|\btruncate\b|\bmv\b|\btee\b|>>?)[^|;&]*\.claude/(hooks|settings)'; then
   echo "BLOCKED: .claude/hooks・settings の Bash 経由改変は禁止です（編集は Edit/Write でレビュー可能な形で行う）" >&2
   exit 2
 fi
 
 # SD4. フックスクリプトの実行権限剥奪（無効化）
-if echo "$COMMAND" | grep -qE 'chmod\b[^|;]*\.claude/hooks'; then
+if echo "$COMMAND" | grep -qE 'chmod\b[^|;&]*\.claude/hooks'; then
   echo "BLOCKED: .claude/hooks への chmod（フック無効化）は禁止です" >&2
   exit 2
 fi
