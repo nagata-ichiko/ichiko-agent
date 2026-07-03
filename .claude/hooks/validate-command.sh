@@ -66,9 +66,10 @@ fi
 # 妨げない — ここで止めるのは自律エージェントによるバイパス実行のみ。
 # =============================================================================
 
-# SD1. コミット/プッシュ時のフック無効化（--no-verify）
-if echo "$COMMAND" | grep -qE 'git\s+(commit|push|merge)\b[^|;&]*--no-verify'; then
-  echo "BLOCKED: --no-verify によるフック無効化は禁止です（ガードレールは人間が手動で扱う / principles §11）" >&2
+# SD1. コミット/プッシュ時のフック無効化（--no-verify / 短縮形 -n）
+#      短縮形 -n は commit のみ対象（git push -n は dry-run、git merge -n は --no-stat で別義）
+if echo "$COMMAND" | grep -qE 'git\s+(commit|push|merge)\b[^|;&]*--no-verify|git\s+commit\b[^|;&]*\s-[a-z]*n\b'; then
+  echo "BLOCKED: --no-verify（短縮形 -n 含む）によるフック無効化は禁止です（ガードレールは人間が手動で扱う / principles §11）" >&2
   exit 2
 fi
 
